@@ -8,10 +8,9 @@ Get a free key at: https://fred.stlouisfed.org/docs/api/api_key.html
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(r"C:\Users\nilee\OneDrive\Documents\GitHub\Credit Regime Project\keys.env")
 
-# ── FRED ──────────────────────────────────────────────────────────────────────
-FRED_API_KEY = os.getenv("FRED_API_KEY", "")  # fallback to empty; will raise clearly
+FRED_API_KEY = os.getenv("FRED_API_KEY")
 
 FRED_SERIES = {
     # Credit spreads
@@ -19,7 +18,7 @@ FRED_SERIES = {
     "ig_oas":       "BAMLC0A0CM",          # ICE BofA IG Corporate OAS (bp)
     # Lending conditions
     "ci_tighten":   "DRTSCILM",            # % banks tightening C&I standards (quarterly → ffill)
-    "ci_loans":     "CILACBW027SBOG",      # C&I loans outstanding, all commercial banks ($B)
+    "ci_loans":     "BUSLOANS",      # C&I loans outstanding, all commercial banks ($B)
     # Delinquency rates
     "cc_delinq":    "DRCCLACBS",           # Credit card delinquency rate (%)
     "mort_delinq":  "DRSFRMACBS",          # SF mortgage delinquency rate (%)

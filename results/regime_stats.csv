@@ -1,0 +1,7 @@
+model,regime,freq_%,avg_duration_months,mean_hy_oas,mean_unrate,mean_ci_tighten
+HMM,Benign,58.2,54.3,4.0,5.01,-1.1
+HMM,Stress,30.7,21.5,5.0,6.6,-0.3
+HMM,Crisis,11.1,15.5,9.0,7.11,45.7
+LSTM,Benign,66.1,46.2,4.0,5.15,0.5
+LSTM,Stress,23.6,22.0,5.0,6.8,-2.4
+LSTM,Crisis,10.4,14.5,9.0,7.04,43.9

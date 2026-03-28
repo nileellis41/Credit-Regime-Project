@@ -317,6 +317,7 @@ def print_summary(
         classification_report(
             lstm_test_labels, lstm_test_preds,
             target_names=[REGIME_NAMES[r] for r in range(N_REGIMES)],
+            labels=[0, 1, 2],
             zero_division=0,
         ),
         "",
@@ -347,6 +348,6 @@ def print_summary(
     report = "\n".join(lines)
     print(report)
     path = os.path.join(RESULTS_DIR, "metrics_summary.txt")
-    with open(path, "w") as f:
+    with open(path, "w", encoding="utf-8") as f:
         f.write(report)
-    print(f"[eval] Report saved → {path}")
+print(f"[eval] Report saved → C:\\Users\\nilee\\OneDrive\\Documents\\GitHub\\Credit Regime Project\\results")

@@ -1,0 +1,54 @@
+======================================================================
+  CREDIT REGIME DETECTOR — MODEL COMPARISON REPORT
+======================================================================
+
+── HMM BASELINE ─────────────────────────────────────────────────────
+  Log-likelihood : -451.4555
+  AIC            : 2552.91
+  BIC            : 5551.61
+  Converged      : True
+
+── LSTM CLASSIFIER ──────────────────────────────────────────────────
+  Test accuracy  : 0.9474
+  (vs HMM pseudo-labels — measures replication fidelity)
+
+              precision    recall  f1-score   support
+
+      Benign       0.89      1.00      0.94        17
+      Stress       1.00      0.90      0.95        21
+      Crisis       0.00      0.00      0.00         0
+
+    accuracy                           0.95        38
+   macro avg       0.63      0.63      0.63        38
+weighted avg       0.95      0.95      0.95        38
+
+
+── MODEL AGREEMENT (full time series) ───────────────────────────────
+  Overall agreement : 0.8929
+  Cohen's kappa     : 0.7984
+  Per-regime        : {'Benign': 0.975, 'Stress': 0.721, 'Crisis': 0.935}
+
+── TRANSITION TIMING ────────────────────────────────────────────────
+  LSTM vs HMM mean lag : 0.75 months
+  (positive = LSTM leads, negative = LSTM lags)
+  LSTM transitions : 8
+  HMM  transitions : 8
+
+── POSTERIOR CONFIDENCE ─────────────────────────────────────────────
+  HMM  mean entropy  : 0.0014
+  LSTM mean entropy  : 0.4497
+  More confident     : HMM
+
+── REGIME STATISTICS ────────────────────────────────────────────────
+  HMM regimes:
+model regime  freq_%  avg_duration_months  mean_hy_oas  mean_unrate  mean_ci_tighten
+  HMM Benign    58.2                 54.3          4.0         5.01             -1.1
+  HMM Stress    30.7                 21.5          5.0         6.60             -0.3
+  HMM Crisis    11.1                 15.5          9.0         7.11             45.7
+
+  LSTM regimes:
+model regime  freq_%  avg_duration_months  mean_hy_oas  mean_unrate  mean_ci_tighten
+ LSTM Benign    66.1                 46.2          4.0         5.15              0.5
+ LSTM Stress    23.6                 22.0          5.0         6.80             -2.4
+ LSTM Crisis    10.4                 14.5          9.0         7.04             43.9
+======================================================================

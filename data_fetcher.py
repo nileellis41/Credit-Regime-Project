@@ -8,17 +8,22 @@ import pandas as pd
 import numpy as np
 from fredapi import Fred
 from config import FRED_API_KEY, FRED_SERIES, START_DATE, END_DATE, RESAMPLE_FREQ, DATA_DIR
+from dotenv import load_dotenv
 
+# Load keys from your specific .env file
+load_dotenv(r"C:\Users\nilee\OneDrive\Documents\GitHub\Credit Regime Project\keys.env")
+
+FRED_API_KEY = os.getenv("FRED_API_KEY")
 
 def _get_fred_client() -> Fred:
     if not FRED_API_KEY:
         raise ValueError(
-            "FRED_API_KEY not set. Add it to a .env file:\n"
-            "  FRED_API_KEY=your_key_here\n"
+            "FRED_API_KEY not found in keys.env at:\n"
+            "  C:\\Users\\nilee\\OneDrive\\Documents\\GitHub\\Credit Regime Project\\keys.env\n"
+            "Make sure it contains: FRED_API_KEY=your_key_here\n"
             "Get a free key at https://fred.stlouisfed.org/docs/api/api_key.html"
         )
     return Fred(api_key=FRED_API_KEY)
-
 
 def fetch_raw(use_cache: bool = True) -> pd.DataFrame:
     """
